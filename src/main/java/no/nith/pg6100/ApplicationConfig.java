@@ -7,6 +7,7 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 import no.nith.pg6100.service.BookService;
 import no.nith.pg6100.service.CustomerService;
+import no.nith.pg6100.service.ESportService;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -30,6 +31,7 @@ public class ApplicationConfig extends Application {
 
         resources.add(BookService.class);
         resources.add(CustomerService.class);
+        resources.add(ESportService.class);
 
         resources.add(ApiListingResource.class);
         resources.add(ApiDeclarationProvider.class);
