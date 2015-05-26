@@ -16,3 +16,6 @@ INSERT INTO Author VALUES (2, 'Stephen', 'King');
 INSERT INTO Author VALUES (3, 'J.K.', 'Rowling');
 
 INSERT INTO Person VALUES (1, 'Test Testsson');
+
+INSERT INTO Result VALUES (1, 2, 3);
+INSERT INTO Result VALUES (2, 1, 2);
