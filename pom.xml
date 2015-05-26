@@ -17,6 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <javaee-api.version>7.0</javaee-api.version>
+        <jsf-api.version>2.1</jsf-api.version>
         <junit.version>4.12</junit.version>
         <h2.version>1.4.187</h2.version>
         <hibernate-entitymanager.version>4.3.7.Final</hibernate-entitymanager.version>
@@ -37,6 +38,12 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${javaee-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>${jsf-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -97,7 +104,6 @@
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warName>beksim10-exam</warName>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
 
