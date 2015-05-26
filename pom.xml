@@ -29,6 +29,7 @@
         <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <maven-compiler-plugin.source_target>1.8</maven-compiler-plugin.source_target>
+        <jaxws-maven-plugin.version>2.3</jaxws-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -128,6 +129,27 @@
                     <source>${maven-compiler-plugin.source_target}</source>
                     <target>${maven-compiler-plugin.source_target}</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>${jaxws-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://pg6100-eksamen.herokuapp.com/services/EsportService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
