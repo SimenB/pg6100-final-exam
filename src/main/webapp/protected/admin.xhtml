@@ -1,9 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
-    <h1>Brukeren er nå innlogget</h1>
+    <h1>Welcome to this awesome interface</h1>
+
+    <ui:repeat value="#{controller.gameResults}" var="gameResult">
+        <h1><h:outputText value="#{gameResult.game}"/></h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Teamname</th>
+                <th>Matches</th>
+                <th>Victories</th>
+                <th>Losses</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ui:repeat value="#{gameResult.teams}" var="team">
+                <tr>
+                    <td><h:outputText value="#{team.id}"/></td>
+                    <td><h:outputText value="#{team.name}"/></td>
+                    <td><h:outputText value="#{team.totalNumOfMatches}"/></td>
+                    <td><h:outputText value="#{team.numOfVictories}"/></td>
+                    <td><h:outputText value="#{team.numOfLosses}"/></td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+        </table>
+    </ui:repeat>
     <h:form>
         <h:commandLink value="Logout" action="#{controller.logout}"/>
     </h:form>
