@@ -1,7 +1,5 @@
 package no.nith.pg6100.util;
 
-import no.nith.pg6100.soap.service.EsportService;
-import no.nith.pg6100.soap.service.EsportService_Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +20,6 @@ public class Resources {
     @Produces
     public Logger produceLog(final InjectionPoint injectionPoint) {
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-    }
-
-    @Produces
-    public EsportService produceEsportService() {
-        return new EsportService_Service().getEsportServicePort();
     }
 
     @Produces

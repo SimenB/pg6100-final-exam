@@ -2,12 +2,14 @@ package no.nith.pg6100.infrastructure;
 
 import no.nith.pg6100.Config;
 import no.nith.pg6100.soap.service.EsportService;
+import no.nith.pg6100.soap.service.EsportService_Service;
 import no.nith.pg6100.soap.service.SOAPException_Exception;
 import no.nith.pg6100.soap.service.Team;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.xml.ws.WebServiceRef;
 import java.util.List;
 
 @Stateless
@@ -15,7 +17,7 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     @Inject
     private Config config;
 
-    @Inject
+    @WebServiceRef(EsportService_Service.class)
     private EsportService esportService;
 
     private String callerId;

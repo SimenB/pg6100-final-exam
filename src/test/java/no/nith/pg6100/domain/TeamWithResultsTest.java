@@ -16,6 +16,6 @@ public class TeamWithResultsTest {
 
     @Test
     public void testGetTotalNumOfMatches() throws Exception {
-        assertThat(teamWithResults.getTotalNumOfMatches(), is(7));
+        assertThat(teamWithResults.getTotalNumOfMatches(), is(7L));
     }
 }
