@@ -19,7 +19,12 @@ public class BookServiceIT {
 
     @Test
     public void getBooks() {
-        Response response = ClientBuilder.newClient().target(BASE_URL + "/books").request().get();
+        Response response = ClientBuilder
+            .newClient()
+            .target(BASE_URL + "/books")
+            .request()
+            .get();
+
         assertEquals(HttpResponseCodes.SC_OK, response.getStatus());
 
         List<Book> books = response.readEntity(new GenericType<List<Book>>() {
@@ -34,6 +39,7 @@ public class BookServiceIT {
             .target(BASE_URL + "/books/genre/Fantasy")
             .request()
             .get();
+
         assertEquals(HttpResponseCodes.SC_OK, response.getStatus());
 
         List<Book> books = response.readEntity(new GenericType<List<Book>>() {
@@ -48,6 +54,7 @@ public class BookServiceIT {
             .target(BASE_URL + "/books/author/Terry Pratchett")
             .request()
             .get();
+
         assertEquals(HttpResponseCodes.SC_OK, response.getStatus());
 
         List<Book> books = response.readEntity(new GenericType<List<Book>>() {
@@ -62,6 +69,7 @@ public class BookServiceIT {
             .target(BASE_URL + "/books/id/1")
             .request()
             .get();
+
         assertEquals(HttpResponseCodes.SC_OK, response.getStatus());
 
         Book book = response.readEntity(Book.class);
@@ -86,7 +94,12 @@ public class BookServiceIT {
 
     @Test
     public void deleteBook() {
-        Response response = ClientBuilder.newClient().target(BASE_URL + "/books/id/1").request().delete();
+        Response response = ClientBuilder
+            .newClient()
+            .target(BASE_URL + "/books/id/1")
+            .request()
+            .delete();
+
         assertEquals(HttpResponseCodes.SC_NO_CONTENT, response.getStatus());
     }
 }

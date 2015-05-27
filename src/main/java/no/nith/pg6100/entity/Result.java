@@ -23,10 +23,10 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PERSON")
     private int id;
     @NotNull
-    @Min(0)
+    @Min(1)
     private Integer winner;
     @NotNull
-    @Min(0)
+    @Min(1)
     private Integer loser;
 
     public int getId() {
