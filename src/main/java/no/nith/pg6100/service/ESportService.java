@@ -46,7 +46,7 @@ public class ESportService {
 
     @GET
     @Path("/teams/{game}")
-    @ApiOperation(value = "Finds all games",
+    @ApiOperation(value = "Finds all teams playing a given game",
         response = Team.class,
         responseContainer = "List")
     public Response getAllTeams(@PathParam("game") final String game) {
@@ -63,14 +63,6 @@ public class ESportService {
         final URI uri = uriInfo.getAbsolutePathBuilder().path("/customer/" + (resultDao.getTotalNumberOfResults() - 1)).build();
 
         return Response.created(uri).entity(result).build();
-    }
-
-    @GET
-    @Path("/find-results")
-    @ApiOperation(value = "Finds all results",
-        response = Result.class)
-    public Response getAllResults() {
-        return Response.ok(resultDao.findAll()).build();
     }
 
     @GET

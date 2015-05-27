@@ -5,8 +5,6 @@ import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResource;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
-import no.nith.pg6100.service.BookService;
-import no.nith.pg6100.service.CustomerService;
 import no.nith.pg6100.service.ESportService;
 
 import javax.ws.rs.ApplicationPath;
@@ -29,8 +27,6 @@ public class ApplicationConfig extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new HashSet<>();
 
-        resources.add(BookService.class);
-        resources.add(CustomerService.class);
         resources.add(ESportService.class);
 
         resources.add(ApiListingResource.class);
