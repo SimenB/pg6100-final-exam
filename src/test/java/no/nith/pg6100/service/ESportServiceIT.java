@@ -14,14 +14,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-import static no.nith.pg6100.Constants.BASE_URL;
+import static no.nith.pg6100.util.Constants.BASE_URL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 
 public class ESportServiceIT {
-    private static final String URL = BASE_URL + "/esports";
     private static final GenericType<List<String>> LIST_OF_STRINGS = new GenericType<List<String>>() {
     };
     private static final GenericType<List<Team>> LIST_OF_TEAMS = new GenericType<List<Team>>() {
@@ -40,7 +39,7 @@ public class ESportServiceIT {
     @Test
     public void testGetGames() {
         final Response response = client
-            .target(URL + "/games")
+            .target(BASE_URL + "/games")
             .request()
             .get();
 
@@ -56,7 +55,7 @@ public class ESportServiceIT {
     @Test
     public void testGetTeamsPlayingAGame() {
         final Response response = client
-            .target(URL + "/teams/Hearthstone")
+            .target(BASE_URL + "/teams/Hearthstone")
             .request()
             .get();
 
@@ -74,7 +73,7 @@ public class ESportServiceIT {
     @Test
     public void testGetResult() {
         final Response response = client
-            .target(URL + "/results/9")
+            .target(BASE_URL + "/results/9")
             .request()
             .get();
 
@@ -90,7 +89,7 @@ public class ESportServiceIT {
     @Test
     public void testGetResultsForTeam() {
         final Response response = client
-            .target(URL + "/results?team=2")
+            .target(BASE_URL + "/results?team=2")
             .request()
             .get();
 
@@ -118,7 +117,7 @@ public class ESportServiceIT {
         result.setLoser(2);
 
         final Response response = client
-            .target(URL + "/results")
+            .target(BASE_URL + "/results")
             .request()
             .post(Entity.entity(result, MediaType.APPLICATION_JSON_TYPE));
 
@@ -130,7 +129,7 @@ public class ESportServiceIT {
         final Result result = new Result();
 
         final Response response = client
-            .target(URL + "/results")
+            .target(BASE_URL + "/results")
             .request()
             .post(Entity.entity(result, MediaType.APPLICATION_JSON_TYPE));
 

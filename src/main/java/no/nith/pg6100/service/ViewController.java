@@ -1,4 +1,4 @@
-package no.nith.pg6100;
+package no.nith.pg6100.service;
 
 import no.nith.pg6100.domain.GameResult;
 import no.nith.pg6100.infrastructure.ESportServiceWebService;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Model
-public class Controller {
+public class ViewController {
 
     @Inject
     private ESportServiceWebService eSportServiceWebService;

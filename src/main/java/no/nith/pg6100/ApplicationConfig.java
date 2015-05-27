@@ -6,17 +6,18 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResource;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 import no.nith.pg6100.service.ESportService;
+import no.nith.pg6100.util.Constants;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
-@ApplicationPath("/rest")
+@ApplicationPath("/esports")
 public class ApplicationConfig extends Application {
 
     public ApplicationConfig() {
-        BeanConfig beanConfig = new BeanConfig();
+        final BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0.0");
         beanConfig.setBasePath(Constants.BASE_URL);
         beanConfig.setResourcePackage("no.nith.pg6100.service");
@@ -25,7 +26,7 @@ public class ApplicationConfig extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        Set<Class<?>> resources = new HashSet<>();
+        final Set<Class<?>> resources = new HashSet<>();
 
         resources.add(ESportService.class);
 

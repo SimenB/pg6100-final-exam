@@ -6,7 +6,7 @@
 <h:body>
     <h1>Welcome to this awesome interface</h1>
 
-    <ui:repeat value="#{controller.gameResults}" var="gameResult">
+    <ui:repeat value="#{viewController.gameResults}" var="gameResult">
         <h1><h:outputText value="#{gameResult.game}"/></h1>
 
         <table>

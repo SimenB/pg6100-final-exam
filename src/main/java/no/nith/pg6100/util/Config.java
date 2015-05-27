@@ -1,4 +1,4 @@
-package no.nith.pg6100;
+package no.nith.pg6100.util;
 
 import org.slf4j.Logger;
 

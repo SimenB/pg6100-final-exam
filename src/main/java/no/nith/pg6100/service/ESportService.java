@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/esports")
+@Path("/")
 @Api(value = "/esports", description = "operations on esports")
 public class ESportService {
     @Context

@@ -2,6 +2,7 @@ package no.nith.pg6100;
 
 import no.nith.pg6100.domain.GameResult;
 import no.nith.pg6100.infrastructure.ESportServiceWebService;
+import no.nith.pg6100.service.ViewController;
 import no.nith.pg6100.soap.service.Team;
 import no.nith.pg6100.util.MappingFunctions;
 import org.junit.Before;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ControllerTest {
+public class ViewControllerTest {
     @Mock
     private ESportServiceWebService eSportServiceWebService;
     @Mock
@@ -35,7 +36,7 @@ public class ControllerTest {
     private FacesContext facesContext;
 
     @InjectMocks
-    private Controller objectUnderTest;
+    private ViewController objectUnderTest;
 
     @Before
     public void setUp() throws Exception {

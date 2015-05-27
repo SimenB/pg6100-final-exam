@@ -1,6 +1,6 @@
 package no.nith.pg6100.infrastructure;
 
-import no.nith.pg6100.Config;
+import no.nith.pg6100.util.Config;
 import no.nith.pg6100.soap.service.EsportService;
 import no.nith.pg6100.soap.service.EsportService_Service;
 import no.nith.pg6100.soap.service.Team;
