@@ -4,6 +4,7 @@ import no.nith.pg6100.entity.Result;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.internal.util.reflection.Whitebox;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -18,7 +19,7 @@ public class ResultDaoIT {
     @Before
     public void setUp() {
         resultDao = new ResultDao();
-        resultDao.setEntityManager(h2Setup.entityManager());
+        Whitebox.setInternalState(resultDao, "entityManager", h2Setup.entityManager());
     }
 
     @Test

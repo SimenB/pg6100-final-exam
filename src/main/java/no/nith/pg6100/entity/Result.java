@@ -37,7 +37,7 @@ public class Result {
         return winner;
     }
 
-    public void setWinner(Integer winner) {
+    public void setWinner(final Integer winner) {
         this.winner = winner;
     }
 
@@ -45,7 +45,7 @@ public class Result {
         return loser;
     }
 
-    public void setLoser(Integer loser) {
+    public void setLoser(final Integer loser) {
         this.loser = loser;
     }
 }

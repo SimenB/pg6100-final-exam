@@ -5,6 +5,7 @@ import no.nith.pg6100.soap.service.EsportService;
 import no.nith.pg6100.soap.service.EsportService_Service;
 import no.nith.pg6100.soap.service.SOAPException_Exception;
 import no.nith.pg6100.soap.service.Team;
+import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -16,6 +17,9 @@ import java.util.List;
 public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     @Inject
     private Config config;
+
+    @Inject
+    private Logger logger;
 
     @WebServiceRef(EsportService_Service.class)
     private EsportService esportService;
@@ -32,7 +36,7 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
         try {
             return esportService.getGames(callerId).getGames().getGame();
         } catch (final SOAPException_Exception e) {
-            e.printStackTrace();
+            logger.error("Error caught", e);
 
             return null;
         }
@@ -43,7 +47,7 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
         try {
             return esportService.getTeams(callerId, game).getTeams().getTeam();
         } catch (final SOAPException_Exception e) {
-            e.printStackTrace();
+            logger.error("Error caught", e);
 
             return null;
         }

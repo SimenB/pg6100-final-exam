@@ -9,12 +9,8 @@ import java.util.List;
 
 @Stateless
 public class ResultDao {
-    private EntityManager entityManager;
-
     @Inject
-    public void setEntityManager(final EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private EntityManager entityManager;
 
     public List<Result> findAll() {
         return entityManager
