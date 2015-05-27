@@ -6,6 +6,7 @@
         <class>no.nith.pg6100.entity.Book</class>
         <class>no.nith.pg6100.entity.Author</class>
         <class>no.nith.pg6100.entity.Person</class>
+        <class>no.nith.pg6100.entity.Result</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:pg6100-exam-beksim10" />

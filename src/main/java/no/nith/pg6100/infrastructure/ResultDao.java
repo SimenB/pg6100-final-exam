@@ -12,7 +12,7 @@ public class ResultDao {
     private EntityManager entityManager;
 
     @Inject
-    public void setEntityManager(EntityManager entityManager) {
+    public void setEntityManager(final EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -22,7 +22,7 @@ public class ResultDao {
             .getResultList();
     }
 
-    public Result findById(int id) {
+    public Result findById(final int id) {
         return entityManager.find(Result.class, id);
     }
 
@@ -33,7 +33,7 @@ public class ResultDao {
             .getResultList();
     }
 
-    public int totalNumberOfResults() {
+    public int getTotalNumberOfResults() {
         return findAll().size();
     }
 

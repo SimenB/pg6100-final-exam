@@ -1,0 +1,64 @@
+package no.nith.pg6100.infrastructure;
+
+import no.nith.pg6100.entity.Result;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
+
+public class ResultDaoIT {
+    @Rule
+    public H2Setup h2Setup = new H2Setup();
+    private ResultDao resultDao;
+
+    @Before
+    public void setUp() {
+        resultDao = new ResultDao();
+        resultDao.setEntityManager(h2Setup.entityManager());
+    }
+
+    @Test
+    public void findAll() throws Exception {
+        assertThat(resultDao.findAll(), hasSize(10));
+    }
+
+    @Test
+    public void findAllByTeam() throws Exception {
+        assertThat(resultDao.findAllByTeam(2), hasSize(3));
+    }
+
+    @Test
+    public void findById() throws Exception {
+        final Result result = resultDao.findById(1);
+
+        assertThat(result.getWinner(), is(2));
+        assertThat(result.getLoser(), is(1));
+    }
+
+    @Test
+    public void persist() throws Exception {
+        final Result result = new Result();
+
+        result.setLoser(2);
+        result.setWinner(3);
+
+        h2Setup.entityManager().getTransaction().begin();
+        resultDao.persist(result);
+        h2Setup.entityManager().getTransaction().commit();
+
+        assertThat(result.getId(), is(100));
+    }
+
+    @Test
+    public void remove() throws Exception {
+        Result book = resultDao.findById(1);
+        resultDao.remove(book);
+
+        book = resultDao.findById(1);
+        assertThat(book, is(nullValue()));
+    }
+}
