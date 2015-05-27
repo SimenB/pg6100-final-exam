@@ -9,6 +9,7 @@ import no.nith.pg6100.soap.service.Team;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -28,6 +29,7 @@ public class MappingFunctions {
         return game -> {
             final List<TeamWithResults> teamWithResults = eSportServiceWebService
                 .getTeams(game)
+                .orElseGet(Collections::emptyList)
                 .stream()
                 .map(getTeamWithResultsFromTeam(results))
                 .sorted(Comparator.comparingLong(TeamWithResults::getNumOfVictories).reversed())

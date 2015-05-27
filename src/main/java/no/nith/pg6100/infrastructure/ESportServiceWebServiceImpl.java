@@ -3,7 +3,6 @@ package no.nith.pg6100.infrastructure;
 import no.nith.pg6100.Config;
 import no.nith.pg6100.soap.service.EsportService;
 import no.nith.pg6100.soap.service.EsportService_Service;
-import no.nith.pg6100.soap.service.SOAPException_Exception;
 import no.nith.pg6100.soap.service.Team;
 import org.slf4j.Logger;
 
@@ -12,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.xml.ws.WebServiceRef;
 import java.util.List;
+import java.util.Optional;
 
 @Stateless
 public class ESportServiceWebServiceImpl implements ESportServiceWebService {
@@ -32,24 +32,24 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     }
 
     @Override
-    public List<String> getGames() {
+    public Optional<List<String>> getGames() {
         try {
-            return esportService.getGames(callerId).getGames().getGame();
-        } catch (final SOAPException_Exception e) {
+            return Optional.of(esportService.getGames(callerId).getGames().getGame());
+        } catch (final Exception e) {
             logger.error("Error caught", e);
 
-            return null;
+            return Optional.empty();
         }
     }
 
     @Override
-    public List<Team> getTeams(final String game) {
+    public Optional<List<Team>> getTeams(final String game) {
         try {
-            return esportService.getTeams(callerId, game).getTeams().getTeam();
-        } catch (final SOAPException_Exception e) {
+            return Optional.of(esportService.getTeams(callerId, game).getTeams().getTeam());
+        } catch (final Exception e) {
             logger.error("Error caught", e);
 
-            return null;
+            return Optional.empty();
         }
     }
 }

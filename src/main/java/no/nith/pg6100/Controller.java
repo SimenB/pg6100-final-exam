@@ -7,6 +7,7 @@ import no.nith.pg6100.util.MappingFunctions;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,7 @@ public class Controller {
     public List<GameResult> getGameResults() {
         return eSportServiceWebService
             .getGames()
+            .orElseGet(Collections::emptyList)
             .stream()
             .map(mappingFunctions.mapTeamsToGameWithResults())
             .collect(Collectors.toList());

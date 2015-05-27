@@ -3,6 +3,8 @@ package no.nith.pg6100.service;
 import no.nith.pg6100.entity.Result;
 import no.nith.pg6100.infrastructure.ESportServiceWebService;
 import no.nith.pg6100.infrastructure.ResultDao;
+import no.nith.pg6100.soap.service.Team;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,6 +13,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -30,6 +35,12 @@ public class ESportServiceTest {
 
     @InjectMocks
     private ESportService objectUnderTest;
+
+    @Before
+    public void setUp() throws Exception {
+        when(eSportServiceWebService.getGames()).thenReturn(Optional.<List<String>>empty());
+        when(eSportServiceWebService.getTeams(anyString())).thenReturn(Optional.<List<Team>>empty());
+    }
 
     @Test
     public void testGetAllGames() throws Exception {

@@ -21,6 +21,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import java.util.Collections;
+import java.util.List;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/esports")
@@ -41,7 +43,9 @@ public class ESportService {
         response = String.class,
         responseContainer = "List")
     public Response getAllGames() {
-        return Response.ok(eSportServiceWebService.getGames()).build();
+        final List<String> games = eSportServiceWebService.getGames().orElseGet(Collections::emptyList);
+
+        return Response.ok(games).build();
     }
 
     @GET
@@ -50,7 +54,9 @@ public class ESportService {
         response = Team.class,
         responseContainer = "List")
     public Response getAllTeams(@PathParam("game") final String game) {
-        return Response.ok(eSportServiceWebService.getTeams(game)).build();
+        final List<Team> teams = eSportServiceWebService.getTeams(game).orElseGet(Collections::emptyList);
+
+        return Response.ok(teams).build();
     }
 
     @POST

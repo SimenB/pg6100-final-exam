@@ -23,17 +23,17 @@ public class ResultDaoIT {
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void testFindAll() throws Exception {
         assertThat(resultDao.findAll(), hasSize(10));
     }
 
     @Test
-    public void findAllByTeam() throws Exception {
+    public void testFindAllByTeam() throws Exception {
         assertThat(resultDao.findAllByTeam(2), hasSize(3));
     }
 
     @Test
-    public void findById() throws Exception {
+    public void testFindById() throws Exception {
         final Result result = resultDao.findById(1);
 
         assertThat(result.getWinner(), is(2));
@@ -41,7 +41,7 @@ public class ResultDaoIT {
     }
 
     @Test
-    public void persist() throws Exception {
+    public void testPersist() throws Exception {
         final Result result = new Result();
 
         result.setLoser(2);
@@ -55,7 +55,7 @@ public class ResultDaoIT {
     }
 
     @Test
-    public void remove() throws Exception {
+    public void testRemove() throws Exception {
         Result book = resultDao.findById(1);
         resultDao.remove(book);
 
