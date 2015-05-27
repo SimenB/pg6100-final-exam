@@ -8,6 +8,7 @@ import no.nith.pg6100.infrastructure.ResultDao;
 import no.nith.pg6100.soap.service.Team;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -57,9 +58,9 @@ public class ESportService {
     @Consumes(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Create new Result",
         response = Result.class)
-    public Response saveResult(final Result result) {
+    public Response saveResult(@Valid final Result result) {
         resultDao.persist(result);
-        final URI uri = uriInfo.getAbsolutePathBuilder().path("/customer/" + (resultDao.totalNumberOfResults() - 1)).build();
+        final URI uri = uriInfo.getAbsolutePathBuilder().path("/customer/" + (resultDao.getTotalNumberOfResults() - 1)).build();
 
         return Response.created(uri).entity(result).build();
     }

@@ -29,7 +29,7 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     public List<String> getGames() {
         try {
             return esportService.getGames(callerId).getGames().getGame();
-        } catch (SOAPException_Exception e) {
+        } catch (final SOAPException_Exception e) {
             e.printStackTrace();
 
             return null;
@@ -37,10 +37,10 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     }
 
     @Override
-    public List<Team> getTeams(String game) {
+    public List<Team> getTeams(final String game) {
         try {
             return esportService.getTeams(callerId, game).getTeams().getTeam();
-        } catch (SOAPException_Exception e) {
+        } catch (final SOAPException_Exception e) {
             e.printStackTrace();
 
             return null;
