@@ -1,10 +1,10 @@
-package no.nith.pg6100;
+package no.nith.pg6100.domain;
 
 import java.util.List;
 
 public class GameResult {
-    private String game;
-    private List<TeamWithResults   > teams;
+    private final String game;
+    private final List<TeamWithResults> teams;
 
     public GameResult(final String game, final List<TeamWithResults> teams) {
         this.game = game;

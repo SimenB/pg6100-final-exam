@@ -1,5 +1,7 @@
 package no.nith.pg6100;
 
+import no.nith.pg6100.domain.GameResult;
+import no.nith.pg6100.domain.TeamWithResults;
 import no.nith.pg6100.entity.Result;
 import no.nith.pg6100.infrastructure.ESportServiceWebService;
 import no.nith.pg6100.infrastructure.ResultDao;
@@ -21,6 +23,9 @@ public class Controller {
 
     @Inject
     private ResultDao resultDao;
+
+    @Inject
+    private FacesContext facesContext;
 
     public List<GameResult> getGameResults() {
         return eSportServiceWebService
@@ -50,7 +55,8 @@ public class Controller {
     }
 
     public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        facesContext.getExternalContext().invalidateSession();
+
         return "/login.xhtml";
     }
 }

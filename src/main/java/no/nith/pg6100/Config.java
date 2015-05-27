@@ -10,9 +10,6 @@ import java.util.Properties;
 @Singleton
 @Startup
 public class Config implements Serializable {
-//    @Inject
-//    private Logger logger;
-
     private Properties properties;
 
     @PostConstruct

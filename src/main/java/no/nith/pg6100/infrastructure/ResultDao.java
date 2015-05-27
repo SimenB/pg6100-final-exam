@@ -3,15 +3,15 @@ package no.nith.pg6100.infrastructure;
 import no.nith.pg6100.entity.Result;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
 public class ResultDao {
     private EntityManager entityManager;
 
-    @PersistenceContext
+    @Inject
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

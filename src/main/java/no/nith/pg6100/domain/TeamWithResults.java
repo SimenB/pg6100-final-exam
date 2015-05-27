@@ -1,10 +1,10 @@
-package no.nith.pg6100;
+package no.nith.pg6100.domain;
 
 public class TeamWithResults {
-    private int id;
-    private String name;
-    private long numOfVictories;
-    private long numOfLosses;
+    private final int id;
+    private final String name;
+    private final long numOfVictories;
+    private final long numOfLosses;
 
     public TeamWithResults(final int id, final String name, final long numOfVictories, final long numOfLosses) {
         this.id = id;

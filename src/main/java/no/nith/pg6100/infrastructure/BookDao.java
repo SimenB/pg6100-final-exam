@@ -3,8 +3,8 @@ package no.nith.pg6100.infrastructure;
 import no.nith.pg6100.entity.Book;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
@@ -12,7 +12,7 @@ public class BookDao {
 
     private EntityManager entityManager;
 
-    @PersistenceContext
+    @Inject
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

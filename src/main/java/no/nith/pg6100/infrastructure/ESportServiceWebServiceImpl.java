@@ -2,7 +2,6 @@ package no.nith.pg6100.infrastructure;
 
 import no.nith.pg6100.Config;
 import no.nith.pg6100.soap.service.EsportService;
-import no.nith.pg6100.soap.service.EsportService_Service;
 import no.nith.pg6100.soap.service.SOAPException_Exception;
 import no.nith.pg6100.soap.service.Team;
 
@@ -16,14 +15,13 @@ public class ESportServiceWebServiceImpl implements ESportServiceWebService {
     @Inject
     private Config config;
 
-    //@Inject
+    @Inject
     private EsportService esportService;
 
     private String callerId;
 
     @PostConstruct
     public void init() {
-        esportService = new EsportService_Service().getEsportServicePort();
         callerId = config.getCallerId();
     }
 
